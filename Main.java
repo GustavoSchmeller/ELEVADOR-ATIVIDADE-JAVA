@@ -7,7 +7,7 @@ public class Main {
         Elevador ambiente1 = new Elevador((byte) 1, true);
 
         while (true){
-            ambiente1.statusAndar();
+            ambiente1.getStatusAndar();
 
             System.out.print("Você deseja:\n1 - Subir\n2 - Descer\n3 - Abrir a porta\n4 - Fechar a porta\n: ");
 
@@ -20,7 +20,7 @@ public class Main {
                         ambiente1.subirAndar();
                         break;
 
-                    case 2: 
+                    case 2:
                         ambiente1.descerAndar();
                         break;
 
@@ -28,10 +28,10 @@ public class Main {
                         ambiente1.abrirPorta();
                         break;
 
-                    case 4: 
+                    case 4:
                         ambiente1.fecharPorta();
                         break;
-                        
+
                     default: // OPÇÃO NÃO EXISTENTE
                         System.out.println("Opção inválida.");
                         break;
@@ -54,14 +54,14 @@ class Elevador {
         this.andar = andar;
         this.portaAberta = portaAberta;
     }
-    
+
     // ANDAR - METODOS
 
     public byte getAndar(){
         return andar;
     }
 
-    public void statusAndar(){
+    public void getStatusAndar(){
         System.out.println("O elevador está no andar de numero "+ getAndar());
     }
 
@@ -76,13 +76,13 @@ class Elevador {
             System.out.println("(OPERACÃO CANCELADA) - O elevador só pode ir até o décimo andar (10)." );
             return;
         } else {
-            this.andar = (byte) (this.andar + 1);
+            this.andar++;
         }
     }
 
     public void descerAndar(){
         if (getStatusPortaAberta()){
-            System.out.println("(OPERACÃO CANCELADA) - Não é possível descer, pois a porta está aberta.");
+            System.out.println("(OPERACÃO CANCELADA) - Não é possível descer, pois a porta está aberta.");;
             return;
         }
 
@@ -90,12 +90,12 @@ class Elevador {
             System.out.println("(OPERACÃO CANCELADA) - O elevador só pode ir até o térreo (0)." );
             return;
         } else {
-            this.andar = (byte)(this.andar - 1);
+            this.andar--;
         }
     }
 
     // PORTA - METODOS
-    
+
     public boolean getStatusPortaAberta(){
         return this.portaAberta;
     }
