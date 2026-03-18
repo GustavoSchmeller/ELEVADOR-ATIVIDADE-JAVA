@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -32,7 +33,7 @@ public class Main {
                         ambiente1.fecharPorta();
                         break;
 
-                    default: // OPÇÃO NÃO EXISTENTE
+                    default:
                         System.out.println("Opção inválida.");
                         break;
                 }
@@ -46,8 +47,8 @@ public class Main {
 }
 
 class Elevador {
-    byte andar;
-    boolean portaAberta;
+    private byte andar;
+    private boolean portaAberta;
 
 
     public Elevador(byte andar, boolean portaAberta) {
@@ -110,11 +111,19 @@ class Elevador {
     }
 
     public void fecharPorta(){
+        Random random = new Random();
+        boolean portaTravada = random.nextBoolean();
+
         if (!getStatusPortaAberta()){
             System.out.println("(OPERACÃO CANCELADA) - A porta já está fechada.");
+            return;
+        } else if (portaTravada) {
+            System.out.println("(OPERACÃO CANCELADA) Não é possível fechar, pois há pessoas entrando.");
+            return;
         } else {
             System.out.println("(SUCESSO) - A porta foi fechada!");
             this.portaAberta = false;
+            return;
         }
     }
 }
