@@ -39,7 +39,7 @@ public class Main {
                 }
 
             } catch (Exception E) {
-                scanner.next(); // Limpa buffer
+                scanner.next();
                 System.out.println("O valor precisa ser um numero inteiro");
             }
         }
@@ -47,19 +47,20 @@ public class Main {
 }
 
 class Elevador {
-    private byte andar;
+    private byte elevadorAndar;
     private boolean portaAberta;
 
+    // CONSTRUCTOR
 
     public Elevador(byte andar, boolean portaAberta) {
-        this.andar = andar;
+        this.elevadorAndar = andar;
         this.portaAberta = portaAberta;
     }
 
     // ANDAR - METODOS
 
     public byte getAndar(){
-        return andar;
+        return elevadorAndar;
     }
 
     public void getStatusAndar(){
@@ -77,7 +78,7 @@ class Elevador {
             System.out.println("(OPERACÃO CANCELADA) - O elevador só pode ir até o décimo andar (10)." );
             return;
         } else {
-            this.andar++;
+            this.elevadorAndar++;
         }
     }
 
@@ -91,7 +92,7 @@ class Elevador {
             System.out.println("(OPERACÃO CANCELADA) - O elevador só pode ir até o térreo (0)." );
             return;
         } else {
-            this.andar--;
+            this.elevadorAndar--;
         }
     }
 
@@ -118,7 +119,7 @@ class Elevador {
             System.out.println("(OPERACÃO CANCELADA) - A porta já está fechada.");
             return;
         } else if (portaTravada) {
-            System.out.println("(OPERACÃO CANCELADA) Não é possível fechar, pois há pessoas entrando.");
+            System.out.println("(OPERACÃO CANCELADA) Não é possível fechar, pois há pessoas entrando no elevador.");
             return;
         } else {
             System.out.println("(SUCESSO) - A porta foi fechada!");
@@ -127,4 +128,3 @@ class Elevador {
         }
     }
 }
-
