@@ -8,12 +8,14 @@ public class Main {
         Elevador ambiente1 = new Elevador((byte) 1, true);
 
         while (true){
-            ambiente1.getStatusAndar();
 
-            System.out.print("Você deseja:\n1 - Subir\n2 - Descer\n3 - Abrir a porta\n4 - Fechar a porta\n: ");
+            System.out.println("\n--------| 1 - Subir andar \n--------| 2 - Descer andar \n--------| 3 - Abrir a porta \n--------| 4 - Fechar a porta\n");
+            ambiente1.getStatusAndar();
+            System.out.print("\nOpção desejada: ");
 
             try {
                 byte opcaoEscolhida = scanner.nextByte();
+                System.out.println("\n-----------------\n");
 
                 switch (opcaoEscolhida){
 
@@ -34,13 +36,13 @@ public class Main {
                         break;
 
                     default:
-                        System.out.println("Opção inválida.");
+                        System.out.println("(OPERACÃO CANCELADA) - Opção inválida.");
                         break;
                 }
 
             } catch (Exception E) {
                 scanner.next();
-                System.out.println("O valor precisa ser um numero inteiro");
+                System.out.println("(OPERACÃO CANCELADA) - O valor precisa ser um numero inteiro e ser composto de no máximo 1 byte");
             }
         }
     }
@@ -64,7 +66,7 @@ class Elevador {
     }
 
     public void getStatusAndar(){
-        System.out.println("O elevador está no andar de numero "+ getAndar());
+        System.out.println("ANDAR ATUAL = "+ getAndar());
     }
 
 
@@ -79,6 +81,7 @@ class Elevador {
             return;
         } else {
             this.elevadorAndar++;
+            System.out.println("(SUCESSO) - O elevador subiu de andar.");
         }
     }
 
@@ -93,6 +96,7 @@ class Elevador {
             return;
         } else {
             this.elevadorAndar--;
+            System.out.println("(SUCESSO) - O elevador desceu de andar.");
         }
     }
 
@@ -119,7 +123,7 @@ class Elevador {
             System.out.println("(OPERACÃO CANCELADA) - A porta já está fechada.");
             return;
         } else if (portaTravada) {
-            System.out.println("(OPERACÃO CANCELADA) Não é possível fechar, pois há pessoas entrando no elevador.");
+            System.out.println("(TENTE NOVAMENTE) Não é possível fechar, pois há pessoas entrando no elevador.");
             return;
         } else {
             System.out.println("(SUCESSO) - A porta foi fechada!");
