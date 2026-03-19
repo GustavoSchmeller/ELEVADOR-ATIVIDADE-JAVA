@@ -4,12 +4,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        boolean sair = false;
         Scanner scanner = new Scanner(System.in);
         Elevador ambiente1 = new Elevador((byte) 1, true);
 
-        while (true){
+        while (!sair){
 
-            System.out.println("\n--------| 1 - Subir andar \n--------| 2 - Descer andar \n--------| 3 - Abrir a porta \n--------| 4 - Fechar a porta\n");
+            System.out.println("\n--------| 1 - Subir andar \n--------| 2 - Descer andar \n--------| 3 - Abrir a porta \n--------| 4 - Fechar a porta\n--------| 5 - Sair\n");
             ambiente1.getStatusAndar();
             System.out.print("\nOpção desejada: ");
 
@@ -33,6 +34,11 @@ public class Main {
 
                     case 4:
                         ambiente1.fecharPorta();
+                        break;
+
+                    case 5:
+                        sair = true;
+                        System.out.println("Encerrando programa...");
                         break;
 
                     default:
